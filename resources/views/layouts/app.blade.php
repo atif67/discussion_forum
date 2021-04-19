@@ -100,9 +100,12 @@
                         </div>
                         <div class="card-body bg-dark">
                             <ul class="list-group">
+                                <li class="list-group-item"><a href="{{ route('discussions.index') }}">All Channels</a></li>
                                 @foreach ($channels as $channel)
                                     <li class="list-group-item">
+                                        <a href="{{ route('discussions.index').'?channel='.$channel->slug }}">
                                         {{ $channel->name }}
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>

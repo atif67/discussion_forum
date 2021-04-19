@@ -13,7 +13,7 @@ class DiscussionsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create','store']);
+        $this->middleware(['auth','verified'])->only(['create','store']);
     }
 
     /**
@@ -23,7 +23,7 @@ class DiscussionsController extends Controller
      */
     public function index()
     {
-        return view('discussions.index')->with(['discussions' => Discussion::orderBy('id','desc')->paginate(5)]);
+        return view('discussions.index')->with(['discussions' => Discussion::filterByChannels()->orderBy('id','desc')->paginate(5)]);
     }
 
     /**

@@ -19,7 +19,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [DiscussionsController::class,'index'])->name('/');
 
-Auth::routes();
+Auth::routes(['verify' => true]); // Email verification
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
